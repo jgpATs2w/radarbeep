@@ -1,0 +1,15 @@
+exclude
+rsync*
+.git*
+logs
+*.swp
+.*
+store
+dev
+/test/
+*.db
+tmp
+*.log
+libreoffice
+*.doc
+vendor

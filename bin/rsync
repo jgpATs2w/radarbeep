@@ -1,0 +1,56 @@
+#!/bin/bash
+
+USER="gev"
+DOMAIN="gev.anaya.es"
+ROOT="documentroot/api/";#end with slash
+EXCLUDE="bin/rsync_exclude"
+
+#################################################################
+
+read -p "¿Comprobamos antes? (S/n) " check;
+
+if [ -z $check ] || [ $check = S ]; then
+	n=n;
+fi
+
+read -p "Destino (rc1): " target;
+if [ -z $target ]; then
+	target="rc1/";
+else
+	target="$target/";
+fi
+
+to=$USER@$DOMAIN:$ROOT$target
+
+read -p "¿Subida o bajada? (S/b) " upload;
+
+if [ -z $upload ] || [ $upload = S ]; then
+	echo "subiendo a $to...";
+	pwd=`pwd`
+
+	echo ------------------------------------
+	echo    $pwd
+	echo "    |"
+	echo "    V"
+	echo 	$to
+	echo ------------------------------------
+
+	read -p "¿procedemos? (S/n)" confirm;
+
+	if [ -z $confirm ] || [ $confirm = S ] || [ $confirm = s ]; then
+		rsync -tuvzr$n --exclude-from=$EXCLUDE . $to
+
+	else
+		echo "operación cancelada"
+		exit 0
+	fi
+
+
+	exit 0
+else
+	echo "bajando de $to..."
+
+	rsync -tuvzr$n --exclude-from=$EXCLUDE $to .
+
+	exit 0
+fi
