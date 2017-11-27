@@ -1,8 +1,8 @@
 #!/bin/bash
 
-USER="gev"
-DOMAIN="gev.anaya.es"
-ROOT="documentroot/api/";#end with slash
+USER="eleuteron"
+DOMAIN="138.68.72.49"
+ROOT="/var/www/haicku/html/radarbeep/";#end with slash
 EXCLUDE="bin/rsync_exclude"
 
 #################################################################

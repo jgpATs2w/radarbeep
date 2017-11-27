@@ -4,9 +4,9 @@ define( 'VERSION_NUMBER', 'rc1'  );
 
 //DB parameters
 define( 'DBHOST', 'localhost' );
-define( 'DBUSER', 'gev' );
-define( 'DBPASS', 'Gev2015@' );
-define( 'DBDB', "gev" );
+define( 'DBUSER', 'radarbeep' );
+define( 'DBPASS', 'BHRTh9SF8fRbY7Su' );
+define( 'DBDB', "radarbeep" );
 define( 'DB_MEMORY_LIMIT', 10000);
 
 define( 'SRC', realpath( __DIR__ ).'/' );

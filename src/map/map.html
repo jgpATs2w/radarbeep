@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Radares</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: 40.3510851, lng: -3.5170123};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var req = new XMLHttpRequest();
+        req.open('GET', 'radares.json', true);
+        req.onreadystatechange = function (aEvt) {
+          if (req.readyState == 4) {
+             if(req.status == 200){
+               const radares= JSON.parse(req.responseText);
+
+               radares.map(function(radar){
+                 new google.maps.Marker({
+                   position:{lat: +radar.latitud, lng: +radar.longitud},
+                   map:map,
+                   title: radar.descripcion
+                 });
+               });
+
+               alert("dibujados "+radares.length+" marcadores");
+             }else
+              console.error("Error loading page\n");
+          }
+        };
+        req.send(null);
+      }
+
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4lhqpY3dElKyMz07KjMCQ70qX-c_AsZ4&callback=initMap">
+    </script>
+  </body>
+</html>

@@ -2,9 +2,8 @@
 
 
 $app->get('/help', function ($request, $response, $args) {
-    $response->write(file_get_contents(BASE.'assets/help.html'));
-    $response->write("#Para la especificación completa, copia a editor.swagger.io<br><br>");
-    return $response->write(nl2br(file_get_contents(BASE.'assets/swagger.yaml')));
+    $response->write("I need somebody...");
+    return $response;
 
 });
 
@@ -17,7 +16,7 @@ $app->get('/config', function ($request, $response, $args) {
   echo "post_max_size: " . ini_get( 'post_max_size' ) . " <br>";
   echo "upload_max_filesize: " . ini_get( 'upload_max_filesize' ) . " <br>";
   echo "memory_limit: " . ini_get( 'memory_limit' ) . " <br>";
-  echo "allow_url_fopen: " . ini_get( 'allow_url_fopen' ) . EOL;
+  echo "allow_url_fopen: " . ini_get( 'allow_url_fopen' ) . PHP_EOL;
 
 });
 
